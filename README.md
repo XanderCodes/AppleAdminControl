@@ -1,4 +1,4 @@
-![AppleAdminControl Logo](https://raw.githubusercontent.com/XanderCodes/AppleAdminControl/main/AppleAdminControl-Logo2x.png "AppleAdminControl Logo")
+![AppleAdminControl Logo](https://github.com/XanderCodes/AppleAdminControl/blob/main/AppleAdminControl-Logo2x.png?raw=true "AppleAdminControl Logo")
 # AppleAdminControl
 A simple Unturned (LDM) plugin that gives certain permission groups access to the third person admin editor, freecam and spectator controls, without giving them full admin!
 
