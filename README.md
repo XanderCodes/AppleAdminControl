@@ -3,8 +3,11 @@
 # AppleAdminControl
 A simple Unturned (LDM) plugin that gives certain permission groups access to the third person admin editor, freecam and spectator controls, without giving them full admin!
 
-## Redstone Plugins
-Already using Redstone Plugins on your server? This plugin is available through Redstone! Check it out [here](https://redstoneplugins.com/plugins/32).
+<!-- ## Redstone Plugins -->
+<!-- Already using Redstone Plugins on your server? This plugin is available through Redstone! Check it out [here](https://redstoneplugins.com/plugins/32). -->
+
+## Unturned Store
+[This plugin](https://unturnedstore.com/products/116), and some of my other work is available on UnturnedStore.com! Check it out!
 
 ## Permissions
 * **admin.freecam** - Allows the player to use the freecam and camera controls (F1-F5).
