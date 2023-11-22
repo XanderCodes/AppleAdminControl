@@ -23,6 +23,8 @@ namespace AppleAdminControl
 
             BarricadeManager.onTransformRequested += OnBarricadeTransformRequested;
             StructureManager.onTransformRequested += OnStructureTransformRequested;
+
+            Player.OnAnyPlayerAdminUsageChanged += OnAnyPlayerAdminUsageChanged;
         }
 
         protected override void Unload()
@@ -33,7 +35,42 @@ namespace AppleAdminControl
             BarricadeManager.onTransformRequested -= OnBarricadeTransformRequested;
             StructureManager.onTransformRequested -= OnStructureTransformRequested;
 
+            Player.OnAnyPlayerAdminUsageChanged -= OnAnyPlayerAdminUsageChanged;
+
             Logger.Log($"{Name} has been unloaded!", ConsoleColor.Magenta);
+        }
+
+        public void OnAnyPlayerAdminUsageChanged(Player player, EPlayerAdminUsageFlags oldFlags, EPlayerAdminUsageFlags newFlags)
+        {
+            UnturnedPlayer unp = UnturnedPlayer.FromPlayer(player);
+
+            int result = oldFlags - newFlags;
+
+            string txt = "";
+
+            switch(result)
+            {
+                case -1:
+                    txt = "enabled Freecam";
+                    break;
+                case -2:
+                    txt = "enabled Workzone/Editor";
+                    break;
+                case -4:
+                    txt = "enabled Spectator";
+                    break;
+                case 1:
+                    txt = "disabled Freecam";
+                    break;
+                case 2:
+                    txt = "disabled Workzone/Editor";
+                    break;
+                case 4:
+                    txt = "disabled Spectator";
+                    break;
+            }
+
+            Logger.Log($"Player {unp.DisplayName} ({unp.CSteamID}, X: {unp.Position.x}, Y: {unp.Position.y}, Z: {unp.Position.z}) {txt}.");
         }
 
         public void OnPlayerConnect(UnturnedPlayer player)
