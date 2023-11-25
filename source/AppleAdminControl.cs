@@ -11,7 +11,17 @@ using Logger = Rocket.Core.Logging.Logger;
 
 namespace AppleAdminControl
 {
-    public class Main : RocketPlugin
+    public partial class PluginConfig : IRocketPluginConfiguration
+    {
+        public bool shouldLogPlayersUseOfAdminTools;
+
+        public void LoadDefaults()
+        {
+            shouldLogPlayersUseOfAdminTools = true;
+        }
+    }
+
+    public class Main : RocketPlugin<PluginConfig>
     {
         protected override void Load()
         {
@@ -70,7 +80,9 @@ namespace AppleAdminControl
                     break;
             }
 
-            Logger.Log($"Player {unp.DisplayName} ({unp.CSteamID}, X: {unp.Position.x}, Y: {unp.Position.y}, Z: {unp.Position.z}) {txt}.");
+            if (this.Configuration.Instance.shouldLogPlayersUseOfAdminTools) { 
+                Logger.Log($"Player {unp.DisplayName} ({unp.CSteamID}, X: {unp.Position.x}, Y: {unp.Position.y}, Z: {unp.Position.z}) {txt}.");
+            }
         }
 
         public void OnPlayerConnect(UnturnedPlayer player)
